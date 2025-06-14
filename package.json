@@ -10,6 +10,7 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
+    "@vueuse/core": "^13.3.0",
     "axios": "^1.9.0",
     "element-plus": "^2.10.1",
     "pinia": "^3.0.1",
@@ -28,7 +29,6 @@
     "vite": "^6.2.4",
     "vite-plugin-vue-devtools": "^7.7.2"
   },
-  
   "eslintConfig": {
     "rules": {
       "vue/multi-word-component-names": "off"

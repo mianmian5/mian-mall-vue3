@@ -4,29 +4,17 @@
 </script>
 
 <template>
-  <el-button type="primary">i am button</el-button>
-  <!-- <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header> -->
+  <!-- <el-button type="primary">i am button</el-button> -->
 
   <RouterView />
-  <div class="is1">test</div>
+  <!-- <div class="is1">test</div> -->
 </template>
 
 <style lang="scss">
-.is1{
-  color: $priceColor;
+// .is1{
+//   color: $priceColor;
 
-}
+// }
 header {
   line-height: 1.5;
   max-height: 100vh;

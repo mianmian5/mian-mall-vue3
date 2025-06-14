@@ -19,9 +19,14 @@
   </header> -->
 
   <RouterView />
+  <div class="is1">test</div>
 </template>
 
-<style scoped>
+<style lang="scss">
+.is1{
+  color: $priceColor;
+
+}
 header {
   line-height: 1.5;
   max-height: 100vh;

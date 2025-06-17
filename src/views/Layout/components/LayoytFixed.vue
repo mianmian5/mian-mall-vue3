@@ -1,9 +1,20 @@
 <script setup>
   // import LayoutHeaderUl from './LayoutHeaderUl.vue'
   // vueUse
-  import { useScroll } from '@vueuse/core'
-  const { y } = useScroll(window)
 
+  // import { ref } from 'vue';
+  import { useScroll } from '@vueuse/core'
+  import { useCategoryStore } from '@/stores/category';
+  // let list = ref([])
+  // const getCategory=async()=>{
+  //   const res = await getCategoryAPI()
+  //   console.log(res)
+  //   list.value=res.result
+  // }
+  // onMounted(()=>{getCategory()})
+
+  const { y } = useScroll(window)
+  const categoryStore = useCategoryStore()
 </script>
 
 <template>
@@ -12,35 +23,8 @@
       <RouterLink class="logo" to="/" />
       <!-- 导航区域 -->
       <ul class="app-header-nav ">
-        <li class="home">
-          <RouterLink to="/">首页</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">居家</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">美食</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">服饰</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">母婴</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">个护</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">严选</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">数码</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">运动</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">杂项</RouterLink>
+        <li class="home" v-for="item in categoryStore.list" :key="item.id">
+          <RouterLink to="/">{{ item.name }}</RouterLink>
         </li>
       </ul>
 

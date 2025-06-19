@@ -4,4 +4,15 @@ function getBannerAPI(){
     url:'/home/banner'
   })
 }
-export {getBannerAPI}
+
+/**
+ * @description: 获取新鲜好物
+ * @param {*}
+ * @return {*}
+ */
+function getNewthingAPI(){
+  return httpInstance({
+    url:'/home/new'
+  })
+}
+export {getBannerAPI,getNewthingAPI}

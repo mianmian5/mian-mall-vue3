@@ -10,14 +10,14 @@ export const lazyPlugin = {
         //binding：指令对象
         console.log(el,binding)
         // 监听元素是否进入视口
-        useIntersectionObserver(
+        const {stop} = useIntersectionObserver(
           el,
           // 回调函数，isIntersecting 表示是否进入视口
           ([{ isIntersecting }]) => {
             if (isIntersecting) {
               // console.log('元素进入视口啦！')
               // 这里可以写进入视口后的逻辑，比如加载图片、统计曝光等
-              // stop() // 如果只想监听一次，进入视口后可以停止监听
+              stop() // 如果只想监听一次，进入视口后可以停止监听
               el.src = binding.value
               console.log(isIntersecting)
             }

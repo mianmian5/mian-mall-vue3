@@ -2,6 +2,7 @@
 import HomePanel from './HomePanel.vue'
 import { ref,onMounted } from 'vue';
 import { getNewthingAPI } from '@/apis/home';
+
 const list = ref([])
 const getNeWthing=async()=>{
   const res = await getNewthingAPI()

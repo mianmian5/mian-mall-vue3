@@ -15,4 +15,15 @@ function getNewthingAPI(){
     url:'/home/new'
   })
 }
-export {getBannerAPI,getNewthingAPI}
+
+/**
+ * @description: 获取人气推荐
+ * @param {*}
+ * @return {*}
+ */
+function getHotAPI(){
+  return httpInstance({
+    url:'/home/hot'
+  })
+}
+export {getBannerAPI,getNewthingAPI,getHotAPI}

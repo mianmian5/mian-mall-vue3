@@ -6,7 +6,7 @@ const list = ref([])
 const getNeWthing=async()=>{
   const res = await getNewthingAPI()
   list.value = res.result
-  console.log('list',list.value)
+  console.log('新鲜好物res',res)
 }
 onMounted(()=>{
   getNeWthing()

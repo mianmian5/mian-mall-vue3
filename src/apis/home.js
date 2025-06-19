@@ -26,4 +26,15 @@ function getHotAPI(){
     url:'/home/hot'
   })
 }
-export {getBannerAPI,getNewthingAPI,getHotAPI}
+
+/**
+ * @description: 获取所有商品模块
+ * @param {*}
+ * @return {*}
+ */
+const getGoodsAPI = () => {
+  return httpInstance({
+    url: '/home/goods'
+  })
+}
+export {getBannerAPI,getNewthingAPI,getHotAPI,getGoodsAPI}

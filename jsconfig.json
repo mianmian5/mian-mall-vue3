@@ -4,5 +4,7 @@
       "@/*": ["./src/*"]
     }
   },
+  // "target": "es2017",
+  // "module": "ESNext",
   "exclude": ["node_modules", "dist"]
 }

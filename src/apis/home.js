@@ -1,7 +1,10 @@
 import httpInstance from "@/utils/http";
-function getBannerAPI(){
+function getBannerAPI({params={}}){
+  const {distributionSite='1'}=params
+  console.log('实际接收的 params:', params); // 检查这里的输出
   return httpInstance({
-    url:'/home/banner'
+    url:'/home/banner',
+    params:{distributionSite}
   })
 }
 
@@ -11,6 +14,7 @@ function getBannerAPI(){
  * @return {*}
  */
 function getNewthingAPI(){
+
   return httpInstance({
     url:'/home/new'
   })

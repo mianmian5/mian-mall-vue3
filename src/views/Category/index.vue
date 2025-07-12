@@ -2,6 +2,15 @@
 import { ref,onMounted } from 'vue';
 import { getTopCategoryAPI } from '@/apis/category';
 import {useRoute} from 'vue-router'
+import {getBannerAPI} from '@/apis/home'
+
+const bannerlist = ref([])
+const getBanner=async()=>{
+  const res = await getBannerAPI( {params: { distributionSite: '2' }})
+  console.log(res)
+  bannerlist.value = res.result
+}
+onMounted(()=>getBanner())
 const list1 = ref({})
 const route = useRoute()
 const getCategory=async(id)=>{
@@ -23,6 +32,14 @@ onMounted(()=>{getCategory(route.params.id)})
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
           <el-breadcrumb-item>{{ list1.name }}</el-breadcrumb-item>
         </el-breadcrumb>
+      </div>
+      <!-- 轮播图 -->
+      <div class="home-banner">
+        <el-carousel height="500px">
+          <el-carousel-item v-for="item in bannerlist" :key="item.id">
+            <img :src="item.imgUrl" alt="">
+          </el-carousel-item>
+        </el-carousel>
       </div>
     </div>
   </div>
@@ -106,6 +123,15 @@ $xtxColor: #27ba9b;
 
   .bread-container {
     padding: 25px 0;
+  }
+}
+.home-banner {
+  width: 1240px;
+  height: 500px;
+  margin: 0 auto;
+  img {
+    width: 100%;
+    height: 500px;
   }
 }
 </style>

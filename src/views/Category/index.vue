@@ -1,31 +1,23 @@
 <script setup lang="ts">
-import { ref,onMounted } from 'vue';
-import { getTopCategoryAPI } from '@/apis/category';
-import {useRoute} from 'vue-router'
-import {getBannerAPI} from '@/apis/home'
+// import { ref,onMounted } from 'vue';
+// import { getTopCategoryAPI } from '@/apis/category';
+// import {useRoute} from 'vue-router'
+// import {getBannerAPI} from '@/apis/home'
+import { useCategoryStore } from '@/stores/category';
 import GoodsItem from '../Home/components/GoodsItem.vue';
-import { onBeforeRouteUpdate } from 'vue-router';
-
-const bannerlist = ref([])
-const getBanner=async()=>{
-  const res = await getBannerAPI( {params: { distributionSite: '2' }})
-  console.log(res)
-  bannerlist.value = res.result
-}
+// import { onBeforeRouteUpdate } from 'vue-router';
+import { UseBanner } from './composables/useBanner';
+import { useCategory } from './composables/useCategory';
+const {bannerlist}=UseBanner()
+const {list1} = useCategory()
+// const bannerlist = ref([])
+// const getBanner=async()=>{
+//   const res = await getBannerAPI( {params: { distributionSite: '2' }})
+//   console.log(res)
+//   bannerlist.value = res.result
+// }
 // onMounted(()=>getBanner())
-const list1 = ref({})
-const route = useRoute()
-const getCategory=async(id)=>{
-  const res = await getTopCategoryAPI(id)
-  list1.value = res.result
-  console.log('111',list1.value)
-  console.log('res',res)
-}
-onMounted(()=>{getCategory(route.params.id),getBanner()})
-onBeforeRouteUpdate((to)=>{
-  getCategory(to.params.id)
 
-})
 </script>
 
 <template>

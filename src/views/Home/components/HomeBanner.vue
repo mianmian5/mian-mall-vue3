@@ -3,8 +3,8 @@ import {getBannerAPI} from '@/apis/home'
 import { ref,onMounted } from 'vue';
 const list = ref([])
 const getBanner=async()=>{
-  const res = await getBannerAPI()
-  console.log(res)
+  const res = await getBannerAPI( {params: { distributionSite: '1' }})
+  console.log('首页轮播图',res)
   list.value = res.result
 }
 onMounted(()=>getBanner())

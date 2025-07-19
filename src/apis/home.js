@@ -1,7 +1,7 @@
 import httpInstance from "@/utils/http";
 function getBannerAPI({params={}}){
   const {distributionSite='1'}=params
-  console.log('实际接收的 params:', params); // 检查这里的输出
+  console.log('首页、实际接收的 params:', params); // 检查这里的输出
   return httpInstance({
     url:'/home/banner',
     params:{distributionSite}

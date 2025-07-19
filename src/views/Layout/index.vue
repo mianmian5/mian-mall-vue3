@@ -5,6 +5,7 @@ import LayoutFooter from './components/LayoutFooter.vue'
 import LayoytFixed from './components/LayoytFixed.vue'
 import { useCategoryStore } from '@/stores/category'
 import { onMounted } from 'vue'
+// import route from '@/router'
 
 const categoryStore = useCategoryStore()
 onMounted(()=>{
@@ -17,6 +18,7 @@ onMounted(()=>{
   <LayoytFixed/>
   <LayoutNav />
   <LayoutHeader />
-  <RouterView />
+  <!-- <RouterView :key="$route.fullPath"/> -->
+  <RouterView/>
   <LayoutFooter />
 </template>

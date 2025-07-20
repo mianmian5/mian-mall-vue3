@@ -1,4 +1,21 @@
 <script setup>
+import { getCategoryFilterAPI } from '@/apis/category';
+import { ref } from "vue"
+import { onMounted } from "vue"
+// import { onBeforeRouteUpdate } from "vue-router"
+import { useRoute } from "vue-router"
+const list1 = ref({})
+const route = useRoute()
+const getCategory=async(id)=>{
+  const res = await getCategoryFilterAPI(id)
+  list1.value = res.result
+  console.log('二级导航类别',list1.value)
+  console.log('res',res)
+}
+onMounted(()=>{getCategory(route.params.id)})
+// onBeforeRouteUpdate((to)=>{
+//   getCategory(to.params.id)
+// })
 
 
 </script>
@@ -9,9 +26,8 @@
     <div class="bread-container">
       <el-breadcrumb separator=">">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item :to="{ path: '/' }">居家
-        </el-breadcrumb-item>
-        <el-breadcrumb-item>居家生活用品</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: `/category/${list1.parentId}` }">{{ list1.parentName }}        </el-breadcrumb-item>
+        <el-breadcrumb-item>{{ list1.name }}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="sub-container">

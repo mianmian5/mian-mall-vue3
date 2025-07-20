@@ -3,7 +3,7 @@
 // import { getTopCategoryAPI } from '@/apis/category';
 // import {useRoute} from 'vue-router'
 // import {getBannerAPI} from '@/apis/home'
-import { useCategoryStore } from '@/stores/category';
+// import { useCategoryStore } from '@/stores/category';
 import GoodsItem from '../Home/components/GoodsItem.vue';
 // import { onBeforeRouteUpdate } from 'vue-router';
 import { UseBanner } from './composables/useBanner';

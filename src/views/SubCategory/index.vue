@@ -28,12 +28,29 @@ const reqData=ref({
   'sortField': 'publishTime'
 })
 const getGoodList = async()=>{
-  const res = await getSubCategoryAPI(reqData)
+  const res = await getSubCategoryAPI(reqData.value)
   goodList.value = res.result.items
   console.log('二级导航-商品列表',goodList.value)
   console.log('res',res)
 }
 onMounted(()=>{getGoodList()})
+
+const tabChange=()=>{
+  console.log('点击切换',reqData.value.sortField)
+  reqData.value.page=1
+  getGoodList()
+
+}
+const isDisabled = ref(false)
+const load =async()=>{
+  console.log('加载更多数据咯')
+  reqData.value.page++
+  const res = await getSubCategoryAPI(reqData.value)
+  goodList.value=[...goodList.value,...res.result.items]
+  if(res.result.items.length===0){
+    isDisabled.value=true
+  }
+}
 </script>
 
 <template>
@@ -47,12 +64,12 @@ onMounted(()=>{getGoodList()})
       </el-breadcrumb>
     </div>
     <div class="sub-container">
-      <el-tabs>
+      <el-tabs v-model="reqData.sortField" @tab-change="tabChange">
         <el-tab-pane label="最新商品" name="publishTime"></el-tab-pane>
         <el-tab-pane label="最高人气" name="orderNum"></el-tab-pane>
         <el-tab-pane label="评论最多" name="evaluateNum"></el-tab-pane>
       </el-tabs>
-      <div class="body">
+      <div class="body" v-infinite-scroll="load" :infinite-scroll-disabled="isDisabled">
          <!-- 商品列表-->
           <GoodsItem v-for="good in goodList" :good="good" :key="good.id" />
       </div>

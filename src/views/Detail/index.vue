@@ -2,6 +2,9 @@
 import { getDetailAPI } from '@/apis/detail';
 import { ref,onMounted } from 'vue';
 import { useRoute } from 'vue-router';
+import DetailHot from './components/DetailHot.vue';
+// import DetailHot from './components/DetailHot.vue';
+// import { defineProps } from 'vue';
 const goods = ref([])
 // const parentId= ref()
 const route = useRoute()
@@ -127,6 +130,8 @@ onMounted(()=>{
             </div>
             <!-- 24热榜+专题推荐 -->
             <div class="goods-aside">
+              <DetailHot :hot-type="1"></DetailHot>
+              <DetailHot :hot-type="2"></DetailHot>
 
             </div>
           </div>

@@ -1,6 +1,7 @@
 <script setup>
 import { ref,watch } from 'vue';
 import { useMouseInElement } from '@vueuse/core'
+
 // import { useTemplateRef } from 'vue'
 
 
@@ -19,11 +20,7 @@ const enterhander = (i)=>{
   activeIndex.value = i
 }
 //获取鼠标相对位置
-// const target = useTemplateRef<HTMLDivElement>('target')
-
-// const { elementX, elementY, isOutside } = useMouseInElement(target)
 const target = ref(null)
-
 const { elementX, elementY, isOutside } = useMouseInElement(target)
 
 //控制滑块跟随鼠标移动（监听x,y变化，一旦变化，重新设置left,top）

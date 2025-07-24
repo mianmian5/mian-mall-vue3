@@ -3,8 +3,8 @@ import { getDetailAPI } from '@/apis/detail';
 import { ref,onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import DetailHot from './components/DetailHot.vue';
-import ImageView  from '@/components/ImageView/index.vue';
-import MianMallSku from '@/components/MianMallSku/index.vue'
+// import ImageView  from '@/components/ImageView/index.vue';
+// import MianMallSku from '@/components/MianMallSku/index.vue'
 // import DetailHot from './components/DetailHot.vue';
 // import { defineProps } from 'vue';
 const goods = ref([])
